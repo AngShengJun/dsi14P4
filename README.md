@@ -13,6 +13,8 @@ This README file provides the executive summary and insights, and recommendation
 
 **Jupyter Notebook Organization**
 
+The notebooks are located in folder 'assets' -> 'working'
+
 Notebooks are arranged via following system: *1st digit . 2 digit . 3 digit*
 
 - 1st digit: Project number
