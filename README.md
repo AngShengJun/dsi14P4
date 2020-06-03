@@ -26,13 +26,14 @@ Notebooks are arranged via following system: *1st digit . 2 digit . 3 digit*
 
 - 3rd digit:  
 
-  - **First** notebook: **1** 
-- **Second** notebook : **2**, and so on.
+  - **Final version: **2 
+  - **Standalone, explores XGBoost with Undersample and Oversample:** 3
   
   For example,
   
-  - notebook 4.0.1 represents the first note book on Project 4, data cleaning, eda, etc.
-  - notebook 4.1.1 represents the first notebook on Project 4, Machine learning model building
+  - notebook 4_02 represents the finalized note book on Project 4, data cleaning, eda, etc.
+  - notebook 4_12 represents the finalized notebook on Project 4, Machine learning model building
+  - notebook 4_13 represents finalized notebook on Project 4, exploring boosting model performance
 
 ---
 
@@ -64,15 +65,34 @@ On the building of classifier models, several were explored and their performanc
 
 | Metrics                 | LogReg | SVM   | KNN   | DecisionTree | RandForest* | GradientBoost | XGB   |
 | ----------------------- | ------ | ----- | ----- | ------------ | ----------- | ------------- | ----- |
-| **accuracy (validate)** | 0.945  | 0.918 | 0.934 | 0.814        | 0.852       | 0.909         | 0.906 |
-| **sensitivity**         | 0      | 0.226 | 0.066 | 0.65         | 0.524       | 0.226         | 0.241 |
-| **precision**           | 0      | 0.226 | 0.173 | 0.171        | 0.2         | 0.196         | 0.193 |
-| **F1**                  | NaN    | 0.226 | 0.095 | 0.271        | 0.29        | 0.21          | 0.214 |
-| **roc_auc**             | 0.791  | 0.795 | 0.721 | 0.804        | 0.698       | 0.847         | 0.848 |
+| **accuracy (validate)** | 0.945  | 0.918 | 0.934 | 0.814        | 0.852       | 0.909         | 0.914 |
+| **sensitivity**         | 0      | 0.226 | 0.066 | 0.65         | 0.524       | 0.226         | 0.285 |
+| **precision**           | 0      | 0.226 | 0.173 | 0.171        | 0.2         | 0.196         | 0.241 |
+| **F1**                  | NaN    | 0.226 | 0.095 | 0.271        | 0.29        | 0.21          | 0.261 |
+| **roc_auc**             | 0.791  | 0.795 | 0.721 | 0.804        | 0.698       | 0.847         | 0.849 |
 
 *RandForest (undersampling + oversampling), other models (oversampling)
 
-As the proportion of wnv  to none wnv is approx. 5%-95%, this is an imbalanced class problem. The team utilized resampling techniques (SMOTE) to mitigate imbalanced class for machine learning. F1 score and ROC_AUC are used to evaluate the best model. The team picked the XXX model as the production model.
+As the proportion of wnv  to none wnv is approx. 5%-95%, this is an imbalanced class problem. The team utilized resampling techniques (SMOTE) to mitigate imbalanced class for machine learning. F1 score and ROC_AUC are used to evaluate the best model. The team picked both the Randforest and XGBoost models as the production model for Kaggle submissions.
+
+The returned Kaggle (Public scores):
+
+- XGBoost (Undersampling SMOTE): 0.74243 
+- RandomForest (Oversampling and Undersampling SMOTE): 0.75238
+
+The team further explored Undersampling and Oversampling (SMOTE) with XGBoost classifier.
+
+The resulting scores are:
+
+| Metrics          | Random Forest (Under + Oversample SMOTE) | XGBoost (Under + Oversample SMOTE) |
+| ---------------- | ---------------------------------------- | ---------------------------------- |
+| **roc_auc(val)** | 0.847                                    | 0.845                              |
+| **sensitivity**  | 0.664                                    | 0.650                              |
+| **precision**    | 0.212                                    | 0.202                              |
+| **F1**           | 0.322                                    | 0.309                              |
+| **roc_auc**      | 0.866                                    | 0.860                              |
+
+With Kaggle (Public score): 0.77011
 
 **<u>Recommendations and Way Forward.</u>**
 
