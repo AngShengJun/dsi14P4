@@ -13,7 +13,7 @@ This README file provides the executive summary and insights, and recommendation
 
 **Jupyter Notebook Organization**
 
-The notebooks are located in folder 'assets' -> 'working'
+The notebooks are located in folder 'assets' -> 'working' folder.
 
 Notebooks are arranged via following system: *1st digit . 2 digit . 3 digit*
 
@@ -63,13 +63,13 @@ We also note the spraying in 2013 has missed areas of traps with high wnv (more 
 
 On the building of classifier models, several were explored and their performance measures were reported below:
 
-| Metrics                 | LogReg | SVM   | KNN   | DecisionTree | RandForest* | GradientBoost | XGB   |
-| ----------------------- | ------ | ----- | ----- | ------------ | ----------- | ------------- | ----- |
-| **accuracy (validate)** | 0.945  | 0.918 | 0.934 | 0.814        | 0.852       | 0.909         | 0.914 |
-| **sensitivity**         | 0      | 0.226 | 0.066 | 0.65         | 0.524       | 0.226         | 0.285 |
-| **precision**           | 0      | 0.226 | 0.173 | 0.171        | 0.2         | 0.196         | 0.241 |
-| **F1**                  | NaN    | 0.226 | 0.095 | 0.271        | 0.29        | 0.21          | 0.261 |
-| **roc_auc**             | 0.791  | 0.795 | 0.721 | 0.804        | 0.698       | 0.847         | 0.849 |
+| Metrics                 | LogReg | KNN   | DecisionTree | RandForest* | GradientBoost | XGB   |
+| ----------------------- | ------ | ----- | ------------ | ----------- | ------------- | ----- |
+| **accuracy (validate)** | 0.945  | 0.933 | 0.799        | 0.856       | 0.910         | 0.908 |
+| **sensitivity**         | 0      | 0.088 | 0.672        | 0.657       | 0.226         | 0.270 |
+| **precision**           | 0      | 0.300 | 0.161        | 0.217       | 0.196         | 0.213 |
+| **F1**                  | NaN    | 0.122 | 0.261        | 0.326       | 0.210         | 0.238 |
+| **roc_auc**             | 0.791  | 0.672 | 0.774        | 0.862       | 0.837         | 0.849 |
 
 *RandForest (undersampling + oversampling), other models (oversampling)
 
@@ -77,22 +77,25 @@ As the proportion of wnv  to none wnv is approx. 5%-95%, this is an imbalanced c
 
 The returned Kaggle (Public scores):
 
-- XGBoost (Undersampling SMOTE): 0.74243 
-- RandomForest (Oversampling and Undersampling SMOTE): 0.75238
+- XGBoost (Undersampling SMOTE): 0.74579
 
-The team further explored Undersampling and Oversampling (SMOTE) with XGBoost classifier.
+- RandomForest (Oversampling and Undersampling SMOTE): 0.73774
+
+  The team further explored Undersampling and Oversampling (SMOTE) with XGBoost classifier.
 
 The resulting scores are:
 
 | Metrics          | Random Forest (Under + Oversample SMOTE) | XGBoost (Under + Oversample SMOTE) |
 | ---------------- | ---------------------------------------- | ---------------------------------- |
-| **roc_auc(val)** | 0.847                                    | 0.845                              |
-| **sensitivity**  | 0.664                                    | 0.650                              |
-| **precision**    | 0.212                                    | 0.202                              |
-| **F1**           | 0.322                                    | 0.309                              |
-| **roc_auc**      | 0.866                                    | 0.860                              |
+| **roc_auc(val)** | 0.856                                    | 0.856                              |
+| **sensitivity**  | 0.657                                    | 0.657                              |
+| **precision**    | 0.217                                    | 0.217                              |
+| **F1**           | 0.326                                    | 0.326                              |
+| **roc_auc**      | 0.862                                    | 0.862                              |
 
-With Kaggle (Public score): 0.77011
+With combination of Oversample and Undersample on the XGBoost classifier, 
+
+the Kaggle (Public score) improved: **0.75410**
 
 **<u>Recommendations and Way Forward.</u>**
 
